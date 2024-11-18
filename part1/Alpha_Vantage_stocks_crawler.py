@@ -1,0 +1,102 @@
+# Imports
+#import json
+import os
+import sys
+import csv
+import requests
+
+import datetime as dt
+import pandas as pd
+
+from datetime import datetime
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# Globals
+symbol = "NVDA" 
+
+csv_file_name = "year_daily_NVDA_closing_prices.csv"
+
+# Methods
+# helper method for get_daily_stock_data
+def process_stock_data(data, symbol, start_date, end_date):
+    time_series = data.get("Time Series (Daily)", {})
+    processed_data = []
+    
+    for date, values in time_series.items():
+        date_obj = datetime.strptime(date, "%Y-%m-%d")
+        if start_date <= date_obj <= end_date:
+            processed_data.append({
+                "date": date,
+                "symbol": symbol,
+                "close": float(values["4. close"])
+            })
+
+    print("Stock data processed")
+    
+    return sorted(processed_data, key=lambda x: x["date"])
+
+# getting stock data w get request
+def get_daily_stock_data(symbol, api_key, start_date, end_date):
+    base_url = "https://www.alphavantage.co/query"
+    params = {
+        "function": "TIME_SERIES_DAILY",
+        "symbol": symbol,
+        "outputsize": "full",
+        "apikey": api_key
+    }
+    
+    response = requests.get(base_url, params=params)
+    data = response.json()
+    
+    # process the data and retrn
+    print("Stock data retrieved")
+    return process_stock_data(data, symbol, start_date, end_date)
+
+# Main
+
+# getting the api key via vargs
+#api_key = sys.argv[2]
+
+# getting api key via secret
+api_key = os.getenv("AV_API-KEY")
+
+if api_key is None or api_key == "":
+    #print("No API keys found. It should be located in argv[2] of the command prompt!")
+    print("No API keys found. It should be in env file!")
+    sys.exit(0)
+
+if sys.argv[1] == 1:
+    # getting for a year
+    start_date = datetime(2023, 1, 1)
+    end_date = datetime(2024, 1, 1)
+
+else if sys.argv[1] == 10:
+    # getting for a decade
+    #start_date = datetime(2014, 1, 1)
+    #end_date = datetime(2024, 1, 1)
+    
+else:
+    print("No argument found for period range. It should be located in argv[1] of the command prompt!")
+    sys.exit(0)
+
+# call function to get daily stock data, params full
+stock_data = get_daily_stock_data(symbol, api_key, start_date, end_date)
+
+
+# export to csv file
+
+with open(csv_file_name, 'w', newline='', encoding='utf-8') as csvfile:
+    fieldnames = ['date', 'symbol', 'close']
+    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+    writer.writeheader()
+    for single_stock_data in stock_data:
+        writer.writerow(single_stock_data)
+
+print(f"csv file {csv_file_name} written")
+
+# Drafts / dumps
+
+
