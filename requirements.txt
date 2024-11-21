@@ -1,0 +1,6 @@
+dotenv[default]
+praw[default]
+pandas
+requests
+textblob[default]
+regex
