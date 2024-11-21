@@ -13,7 +13,7 @@ reddit = praw.Reddit(
 )
 
 subreddits = {"stocks", "wallstreetbets", "investing", "daytrading"}
-tickers = {"NVDA", "TSLA", "GOOGL"}
+tickers = {"NVDA"}
 
 def fetch_reddit_posts(subreddit_name, keyword, max_posts=100, timeframe="year"):
     subreddit = reddit.subreddit(subreddit_name)
