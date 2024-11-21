@@ -63,18 +63,13 @@ def filter_preprocess(original_text):
     # 
     
     return ""
-
-
+    
 
 df['content'] = df['content'].apply(remove_urls)
 
-
-
-
-
 print("*Data preprocessing done*")
 
-#################################### Data passing - ####################################
+#################################### Data passing - DONE ####################################
 from textblob import TextBlob
 
 def get_sentiment(content):
@@ -94,13 +89,3 @@ df.to_csv("test_ftuned_model_res.csv")
 
 
 print("*Data passing done*") # essentially more little training
-
-#################################### Model evaluation - ####################################
-# not really needed
-
-
-"""
-OH MY GOD ITS HERE
-# Encode the sentence (this includes adding special tokens and padding) // uses the __call__ from tokenzier
-encoded = tokenizer(sentence, padding='max_length', truncation=True, max_length=64, return_tensors='pt')
-"""
