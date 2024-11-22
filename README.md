@@ -1,7 +1,7 @@
 ﻿# CSE472 Project 2 Type 1
 > Rui Heng Foo (1226940821) and Michael Liu ()
 
-## OS environment
+## OS environment :computer:
 OS env for
 
 OS env for Foo
@@ -9,11 +9,11 @@ OS env for Foo
 - Python 3.12.5
 - pip 24.3.1
 
-## Command lines
+## Command lines :bookmark_tabs:
 1. Enter `pip install -r requirements.txt` to the command line of your terminal to install necessary python packages via pip.
 2. First, 
 
-## Directory Structure
+## Directory Structure :deciduous_tree:
 ```
 |   requirements.txt
 
