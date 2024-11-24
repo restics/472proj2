@@ -1,0 +1,81 @@
+import alpha_vantage
+import numpy as np
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+from datetime import datetime
+import load_dotenv
+
+
+class SentimentDecision:
+    def __init__(self, buy_threshold=50, sell_threshold=-50):
+        self.buy_threshold = buy_threshold
+        self.sell_threshold = sell_threshold
+        self.model = LinearRegression()
+        self.trade_log = []
+
+    def train_model(self, historical_data):
+        X = historical_data[['change']]
+        y = historical_data['daily_sentiment_score']
+        self.model.fit(X, y)
+
+    def predict_price_change(self, sentiment_score):
+            return self.model.predict([[sentiment_score]])[0]
+
+    def make_decision(self, date, sentiment_score, current_price):
+        predicted_price_change = self.predict_price_change(sentiment_score)
+
+        if sentiment_score > self.buy_threshold:
+            decision = 'BUY'
+        elif sentiment_score < self.sell_threshold:
+            decision = 'SELL'
+        else:
+            decision = 'HOLD'
+
+        self.log_trade(date, sentiment_score, current_price, predicted_price_change, decision)
+        return decision
+
+    def log_trade(self, date, sentiment_score, current_price, predicted_price_change, decision):
+        self.trade_log.append({
+            'date': date,
+            'sentiment_score': sentiment_score,
+            'current_price': current_price,
+            'predicted_price_change': predicted_price_change,
+            'decision': decision,
+            'buy_threshold': self.buy_threshold,
+            'sell_threshold': self.sell_threshold
+        })
+
+    def get_trade_log(self):
+        return pd.DataFrame(self.trade_log)
+
+    def set_thresholds(self, buy_threshold, sell_threshold):
+        self.buy_threshold = buy_threshold
+        self.sell_threshold = sell_threshold
+
+historical_data = pd.read_csv("combined_sentiment_results.csv")
+historical_data = historical_data.drop(columns=['Unnamed: 0'])
+print(historical_data.head())
+
+decision_module = SentimentDecision()
+decision_module.train_model(historical_data)
+
+# Test by simulating 5 trading decisions
+dates = pd.date_range(start='2024-01-01', periods=5)
+current_price_change = [20, -20, 1, 3, -1]
+sentiment_scores = [55, -60, 20, -70, 30]
+
+for date, score, price in zip(dates, sentiment_scores, current_price_change):
+    decision = decision_module.make_decision(date, score, price)
+    print(f"Date: {date.date()}, Sentiment: {score}, Change: {price}, Decision: {decision}")
+
+# Adjust thresholds and make new decisions
+decision_module.set_thresholds(buy_threshold=40, sell_threshold=-40)
+
+for date, score, price in zip(dates, sentiment_scores, current_price_change):
+    decision = decision_module.make_decision(date, score, price)
+    print(f"Date: {date.date()}, Sentiment: {score}, Change: {price}, Decision: {decision}")
+
+# Get trade log
+trade_log = decision_module.get_trade_log()
+print("\nTrade Log:")
+print(trade_log)

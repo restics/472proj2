@@ -3,84 +3,84 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
-        <entry key="\rdaytrading_GOOGL.csv">
+        <entry key="\part1\out\rdaytrading_nvda.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="\rdaytrading_TSLA.csv">
+        <entry key="\part1\out\rinvesting_GOOGL.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="\rdaytrading_nvda.csv">
+        <entry key="\part1\out\rinvesting_NVDA.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="\rinvesting_GOOGL.csv">
+        <entry key="\part1\out\rstocks_NVDA.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="\rinvesting_NVDA.csv">
+        <entry key="\part1\out\rwallstreetbets_NVDA.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="\rinvesting_TSLA.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="|" />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\rstocks_GOOGL.csv">
+        <entry key="\part1\year_daily_NVDA_closing_prices.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="\rstocks_NVDA.csv">
+        <entry key="\part2\out\combined_sentiment_results.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="\rstocks_TSLA.csv">
+        <entry key="\part2\out\daily_sentiment_score.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="\rwallstreetbets_GOOGL.csv">
+        <entry key="\part3\combined_sentiment_results.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="\rwallstreetbets_NVDA.csv">
+        <entry key="\part3\daily_sentiment_score.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="\rwallstreetbets_TSLA.csv">
+        <entry key="\part3\year_daily_NVDA_closing_prices.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="diff.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />

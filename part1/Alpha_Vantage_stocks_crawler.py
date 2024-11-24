@@ -66,20 +66,9 @@ if api_key is None or api_key == "":
     #print("No API keys found. It should be located in argv[2] of the command prompt!")
     print("No API keys found. It should be in env file!")
     sys.exit(0)
+start_date = datetime(2014, 1, 1)
+end_date = datetime(2024, 1, 1)
 
-if sys.argv[1] == 1:
-    # getting for a year
-    start_date = datetime(2023, 1, 1)
-    end_date = datetime(2024, 1, 1)
-
-else if sys.argv[1] == 10:
-    # getting for a decade
-    #start_date = datetime(2014, 1, 1)
-    #end_date = datetime(2024, 1, 1)
-    
-else:
-    print("No argument found for period range. It should be located in argv[1] of the command prompt!")
-    sys.exit(0)
 
 # call function to get daily stock data, params full
 stock_data = get_daily_stock_data(symbol, api_key, start_date, end_date)

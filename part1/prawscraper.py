@@ -39,4 +39,4 @@ if __name__ == "__main__":
             df = df.drop_duplicates()
             df = df.dropna()
             df = df.sort_values(by="date")
-            df.to_csv(f"out/r{subreddit_name}_{keyword}.csv", index=False)
+            df.to_csv(f"part1/out/r{subreddit_name}_{keyword}.csv", index=False)
