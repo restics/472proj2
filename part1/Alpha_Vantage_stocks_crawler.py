@@ -79,7 +79,7 @@ stock_data = get_daily_stock_data(symbol, api_key, start_date, end_date)
 
 # export to csv files
 
-with open(".\\out\\year_daily_NVDA_prices.csv", 'w', newline='', encoding='utf-8') as csvfile:
+with open("year_daily_NVDA_prices.csv", 'w', newline='', encoding='utf-8') as csvfile:
     fieldnames = ['date', 'symbol', 'open', 'high', 'low', 'close', 'volume']
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
@@ -99,7 +99,7 @@ stock_data = get_daily_stock_data(symbol, api_key, start_date, end_date)
 
 # export to csv files
 
-with open(".\\out\\decade_daily_NVDA_prices.csv", 'w', newline='', encoding='utf-8') as csvfile:
+with open("decade_daily_NVDA_prices.csv", 'w', newline='', encoding='utf-8') as csvfile:
     fieldnames = ['date', 'symbol', 'open', 'high', 'low', 'close', 'volume']
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
