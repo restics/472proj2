@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 from sklearn.linear_model import LinearRegression
 from datetime import datetime
-#import load_dotenv
+import load_dotenv
 
 path = "..\\part3\\out\\"
 
@@ -54,7 +54,7 @@ class SentimentDecision:
         self.sell_threshold = sell_threshold
 
 historical_data = pd.read_csv(path + "combined_sentiment_results.csv")
-historical_data = historical_data.drop(columns=['Unnamed: 0'])
+historical_data = historical_data[["change", "daily_sentiment_score"]]
 print(historical_data.head())
 
 decision_module = SentimentDecision()
