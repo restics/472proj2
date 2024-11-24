@@ -1,7 +1,7 @@
 import pandas as pd
 
 sentiment_scores = pd.read_csv("daily_sentiment_score.csv")
-closing_prices = pd.read_csv("year_daily_NVDA_closing_prices.csv")
+closing_prices = pd.read_csv("year_daily_NVDA_prices.csv")
 
 # get sentiment scores from closing prices dates
 sentiment_scores['date'] = pd.to_datetime(sentiment_scores['date'])
