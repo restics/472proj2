@@ -30,7 +30,11 @@ def process_stock_data(data, symbol, start_date, end_date):
             processed_data.append({
                 "date": date,
                 "symbol": symbol,
-                "close": float(values["4. close"])
+                "open": float(values["1. open"]),
+                "high": float(values["2. high"]),
+                "low": float(values["3. low"]),
+                "close": float(values["4. close"]),
+                "volume": float(values["5. volume"])
             })
 
     print("Stock data processed")

@@ -16,8 +16,6 @@ load_dotenv()
 # Globals
 symbol = "NVDA" 
 
-csv_file_name = "year_daily_NVDA_closing_prices.csv"
-
 # Methods
 # helper method for get_daily_stock_data
 def process_stock_data(data, symbol, start_date, end_date):
@@ -30,10 +28,10 @@ def process_stock_data(data, symbol, start_date, end_date):
             processed_data.append({
                 "date": date,
                 "symbol": symbol,
-                "open": float(values["1. open"])
-                "high": float(values["2. high"])
-                "low": float(values["3. low"])
-                "close": float(values["4. close"])
+                "open": float(values["1. open"]),
+                "high": float(values["2. high"]),
+                "low": float(values["3. low"]),
+                "close": float(values["4. close"]),
                 "volume": float(values["5. volume"])
             })
 
@@ -70,25 +68,46 @@ if api_key is None or api_key == "":
     #print("No API keys found. It should be located in argv[2] of the command prompt!")
     print("No API keys found. It should be in env file!")
     sys.exit(0)
-start_date = datetime(2014, 1, 1)
-end_date = datetime(2024, 1, 1)
 
+#################################### Year ####################################
+
+end_date = datetime.now()
+start_date = end_date - relativedelta(years=1)
 
 # call function to get daily stock data, params full
 stock_data = get_daily_stock_data(symbol, api_key, start_date, end_date)
 
+# export to csv files
 
-# export to csv file
-
-with open(csv_file_name, 'w', newline='', encoding='utf-8') as csvfile:
-    fieldnames = ['date', 'symbol', 'close']
+with open(".\\out\\year_daily_NVDA_closing_prices.csv", 'w', newline='', encoding='utf-8') as csvfile:
+    fieldnames = ['date', 'symbol', 'open', 'high', 'low', 'close', 'volume']
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
     writer.writeheader()
     for single_stock_data in stock_data:
         writer.writerow(single_stock_data)
 
-print(f"csv file {csv_file_name} written")
+print("csv file year_daily_NVDA_closing_prices.csv written")
+
+#################################### Decade ####################################
+
+end_date = datetime.now()
+start_date = end_date - relativedelta(years=10)
+
+# call function to get daily stock data, params full
+stock_data = get_daily_stock_data(symbol, api_key, start_date, end_date)
+
+# export to csv files
+
+with open(".\\out\\decade_daily_NVDA_closing_prices.csv", 'w', newline='', encoding='utf-8') as csvfile:
+    fieldnames = ['date', 'symbol', 'open', 'high', 'low', 'close', 'volume']
+    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+    writer.writeheader()
+    for single_stock_data in stock_data:
+        writer.writerow(single_stock_data)
+
+print("csv file decade_daily_NVDA_closing_prices.csv written")
 
 # Drafts / dumps
 
