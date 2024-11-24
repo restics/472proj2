@@ -1,6 +1,6 @@
 import pandas as pd
 
-part1_path = "..\\part1\\out\\"
+part1_path = "..\\part1\\"
 part2_path = "..\\part2\\out\\"
 
 sentiment_scores = pd.read_csv(part2_path + "daily_sentiment_score.csv")
