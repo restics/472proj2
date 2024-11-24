@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 from sklearn.linear_model import LinearRegression
 from datetime import datetime
-import load_dotenv
+#import load_dotenv
 
 path = "..\\part3\\out\\"
 
