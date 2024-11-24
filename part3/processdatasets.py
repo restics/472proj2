@@ -20,7 +20,7 @@ print(processed_sentiment_scores)
 new_df = closing_prices.copy()
 new_df['change'] = closing_prices['close'].diff()
 new_df = new_df.merge(processed_sentiment_scores, on='date', how='left').dropna(subset=['daily_sentiment_score'])
-new_df = new_df[['change', 'daily_sentiment_score']]
+new_df = new_df[['change', 'daily_sentiment_score', 'date']]
 new_df['change'] = new_df['change'].round(2)
 
 new_df.to_csv(".\\out\\combined_sentiment_results.csv")

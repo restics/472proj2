@@ -6,14 +6,14 @@ import pandas as pd
 
 load_dotenv()
 
+subreddits = {"stocks", "wallstreetbets", "investing", "daytrading"}
+tickers = {"NVDA"}
+
 reddit = praw.Reddit(
     client_id=os.getenv("CLIENT_ID"),
     client_secret=os.getenv("CLIENT_SECRET"),
     user_agent="stock sentiment scraper by u/pixelizedgaming",
 )
-
-subreddits = {"stocks", "wallstreetbets", "investing", "daytrading"}
-tickers = {"NVDA"}
 
 def fetch_reddit_posts(subreddit_name, keyword, max_posts=100, timeframe="year"):
     subreddit = reddit.subreddit(subreddit_name)
