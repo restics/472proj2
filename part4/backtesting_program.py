@@ -182,7 +182,6 @@ print(f"Win/Loss Ratio: {win_loss_ratio:.2f}")
 cerebro.plot()
 print("*Backtesting done*")
 
-
 X = decision_module.get_trade_log()["date"]
 y = decision_module.get_trade_log()["predicted_price_change"]
 
