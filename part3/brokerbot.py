@@ -53,17 +53,8 @@ class SentimentDecision:
         self.buy_threshold = buy_threshold
         self.sell_threshold = sell_threshold
 
-historical_data = pd.read_csv(path + "combined_sentiment_results.csv")
-historical_data = historical_data[["change", "daily_sentiment_score"]]
-print(historical_data.head())
-
-decision_module = SentimentDecision()
-decision_module.train_model(historical_data)
-
-
-
 ### Dump
-
+"""
 # Test by simulating 5 trading decisions
 dates = pd.date_range(start='2024-01-01', periods=5)
 current_price_change = [20, -20, 1, 3, -1]
@@ -84,3 +75,4 @@ for date, score, price in zip(dates, sentiment_scores, current_price_change):
 trade_log = decision_module.get_trade_log()
 print("\nTrade Log:")
 print(trade_log)
+"""
