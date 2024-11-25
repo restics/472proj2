@@ -21,9 +21,7 @@ Prerequisites: current path of the directory is `...\472proj2`
 4. Run only `python processdatasets.py` in part3\
 5. Run `python backtesting_program.py` in part4\
 
-
-
-Further instructions are listed in the report.
+Further instructions and details are listed in the report.
 
 ## Directory Structure :deciduous_tree:
 ```
@@ -77,9 +75,11 @@ Further instructions are listed in the report.
 |   \---__pycache__
 |           brokerbot.cpython-312.pyc
 |           
-\---part4
-        backtesting_program.py
-        backtesting_program.py.bak
++---part4
+|       backtesting_program.py
+|       backtesting_program.py.bak
+|       brokerbot.py
+            
 ```            
 
 
