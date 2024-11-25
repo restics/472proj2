@@ -26,7 +26,7 @@ class SentimentDecision:
 
     def make_decision(self, date, sentiment_score, current_price):
         predicted_price_change = self.predict_price_change(current_price)
-
+        predicted_price_change = (predicted_price_change-9) * 100
         print (f"Making decision on {date} with sentiment score {sentiment_score} and price change {current_price}, predicted sentiment score {predicted_price_change}")
 
         if predicted_price_change > self.buy_threshold:

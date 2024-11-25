@@ -62,7 +62,7 @@ part3_path = "..\\part3\\out\\"
 historical_data = pd.read_csv(part3_path + "combined_sentiment_results.csv", parse_dates=True)
 historical_data = historical_data.drop(columns=['Unnamed: 0'])
 
-historical_data = historical_data[(np.abs(stats.zscore(historical_data[['change']])) < 3).all(axis=1)]
+historical_data = historical_data[(np.abs(stats.zscore(historical_data[['change']])) < 3).all(axis=1)] #remove outliers
 print(historical_data)
 
 decision_module = SentimentDecision( buy_threshold=upp_threshold, sell_threshold=low_threshold)
