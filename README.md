@@ -1,8 +1,11 @@
 ﻿# CSE472 Project 2 Type 1
-> Rui Heng Foo (1226940821) and Michael Liu ()
+> Rui Heng Foo (1226940821) and Michael Liu (1225287050)
 
 ## OS environment :computer:
-OS env for
+OS env for Michael
+- Windows 11 
+- Python 3.12
+- pip 24.3.1
 
 OS env for Foo
 - Windows 10 / Powershell Major 5 Minor 1 Build 19041 Revision 5129

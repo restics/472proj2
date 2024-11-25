@@ -58,7 +58,7 @@ historical_data = historical_data.drop(columns=['Unnamed: 0'])
 decision_module = SentimentDecision()
 decision_module.train_model(historical_data)
 
-
+decision_module.set_thresholds(upp_threshold, low_threshold)
 # import backtesting framework via backtesting.py
 import tulipy
 import numpy as np
@@ -81,8 +81,13 @@ class SentimentStrategy(Strategy):
             return # skipping
             
         # trading logik
-        
-        
+        decision = decision_module.make_decision(self.data.index[-1], self.data.daily_sentiment_score[-1], self.data.Close[-1])
+        if decision == 'BUY':
+            self.buy()
+        elif decision == 'SELL':
+            self.sell()
+
+
         """
         if self.sma[-1] < self.data.Close[-1]:
             self.buy()

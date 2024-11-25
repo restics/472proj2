@@ -66,7 +66,21 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\part3\out\combined_sentiment_results.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\part3\year_daily_NVDA_closing_prices.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\part4\out\trade_log.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />

@@ -11,7 +11,7 @@ sentiment_scores['date'] = pd.to_datetime(sentiment_scores['date'])
 closing_prices['date'] = pd.to_datetime(closing_prices['date'])
 
 
-# process sentiment scores
+# clip the times
 sentiment_scores['date'] = sentiment_scores['date'].dt.date
 processed_sentiment_scores = sentiment_scores.groupby('date').mean().reset_index()
 processed_sentiment_scores['date'] = pd.to_datetime(processed_sentiment_scores['date'])
